@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/tlkamp/litter-exporter/compare/v1.2.0...v1.3.0) (2021-04-06)
+
+
+### Features
+
+* **collector:** adds cycles until full metric ([010ede6](https://github.com/tlkamp/litter-exporter/commit/010ede68d368b0e4bfda97680533f7a6089898a5))
+
 # [1.2.0](https://github.com/tlkamp/litter-exporter/compare/v1.1.0...v1.2.0) (2021-04-06)
 
 
