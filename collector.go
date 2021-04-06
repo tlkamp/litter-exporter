@@ -7,15 +7,16 @@ import (
 )
 
 type LitterRobotCollector struct {
-	cycles      *prometheus.Desc
-	drawerFull  *prometheus.Desc
-	capacity    *prometheus.Desc
-	nightlight  *prometheus.Desc
-	sleepMode   *prometheus.Desc
-	unitStatus  *prometheus.Desc
-	panelLocked *prometheus.Desc
-	waitTimeMin *prometheus.Desc
-	lrClient    *lr.Client
+	cycles        *prometheus.Desc
+	drawerFull    *prometheus.Desc
+	capacity      *prometheus.Desc
+	nightlight    *prometheus.Desc
+	sleepMode     *prometheus.Desc
+	unitStatus    *prometheus.Desc
+	panelLocked   *prometheus.Desc
+	waitTimeMin   *prometheus.Desc
+	dfiCycleCount *prometheus.Desc
+	lrClient      *lr.Client
 }
 
 func NewCollector(email, password, apiKey, clientSecret, clientId, endpoint, authEndpoint string) *LitterRobotCollector {
@@ -62,6 +63,9 @@ func NewCollector(email, password, apiKey, clientSecret, clientId, endpoint, aut
 		waitTimeMin: prometheus.NewDesc(
 			"litterrobot_wait_time_minutes", "cycle wait time minutes", labels, nil,
 		),
+		dfiCycleCount: prometheus.NewDesc(
+			"litterrobot_dfi_cycle_count", "DFI cycle count", labels, nil,
+		),
 		lrClient: client,
 	}
 }
@@ -75,6 +79,7 @@ func (lrc *LitterRobotCollector) Describe(ch chan<- *prometheus.Desc) {
 	ch <- lrc.unitStatus
 	ch <- lrc.panelLocked
 	ch <- lrc.waitTimeMin
+	ch <- lrc.dfiCycleCount
 }
 
 func (lrc *LitterRobotCollector) Collect(ch chan<- prometheus.Metric) {
@@ -90,6 +95,7 @@ func (lrc *LitterRobotCollector) Collect(ch chan<- prometheus.Metric) {
 		ch <- prometheus.MustNewConstMetric(lrc.unitStatus, prometheus.GaugeValue, s.UnitStatus, labels...)
 		ch <- prometheus.MustNewConstMetric(lrc.panelLocked, prometheus.GaugeValue, bool2float(s.PanelLockActive), labels...)
 		ch <- prometheus.MustNewConstMetric(lrc.waitTimeMin, prometheus.GaugeValue, s.CleanCycleWaitTimeMinutes, labels...)
+		ch <- prometheus.MustNewConstMetric(lrc.dfiCycleCount, prometheus.GaugeValue, s.DFICycleCount, labels...)
 	}
 }
 
