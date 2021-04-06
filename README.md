@@ -10,15 +10,17 @@ changes with no notice. Breaking changes will be handled as soon as possible.
 ## Metrics
 Metrics are available at the default and metrics endpoints (`/` and `/metrics` respectively).
 
-| Name                    | Type    |
-|-------------------------|---------|
-| litterrobot_capacity    | Gauge   |
-| litterrobot_cycles      | Counter |
-| litterrobot_drawer_full | Gauge   |
-| litterrobot_nightlight  | Gauge   |
-| litterrobot_sleepmode   | Gauge   |
-| litterrobot_unit_status | Gauge   |
-
+| Name                          | Type    |
+|-------------------------------|---------|
+| litterrobot_capacity          | Gauge   |
+| litterrobot_cycles            | Counter |
+| litterrobot_drawer_full       | Gauge   |
+| litterrobot_nightlight        | Gauge   |
+| litterrobot_sleepmode         | Gauge   |
+| litterrobot_unit_status       | Gauge   |
+| litterrobot_wait_time_minutes | Gauge   |
+| litterrobot_panel_locked      | Gauge   |
+| litterrobot_dfi_cycle_count    | Gauge   |
 
 ## Labels
 | Name   | Value                                                                |
