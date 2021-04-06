@@ -5,6 +5,8 @@ Litter Exporter is a Prometheus exporter for the [Litter Robot](https://www.litt
 **This exporter uses an experimental API.** The upstream Litter Robot API is not publicly documented and may cause breaking
 changes with no notice. Breaking changes will be handled as soon as possible.
 
+![dashboard](doc/img/litter-exporter-dash.png)
+
 ## Metrics
 Metrics are available at the default and metrics endpoints (`/` and `/metrics` respectively).
 
