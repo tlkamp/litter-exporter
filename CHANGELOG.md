@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/tlkamp/litter-exporter/compare/v1.1.0...v1.2.0) (2021-04-06)
+
+
+### Features
+
+* **collector:** adds dfi cycle count metric ([2fafbf4](https://github.com/tlkamp/litter-exporter/commit/2fafbf4c19e3261d99bafd43093985ad20832c6b))
+
 # [1.1.0](https://github.com/tlkamp/litter-exporter/compare/v1.0.0...v1.1.0) (2021-04-06)
 
 
