@@ -7,16 +7,17 @@ import (
 )
 
 type LitterRobotCollector struct {
-	cycles        *prometheus.Desc
-	drawerFull    *prometheus.Desc
-	capacity      *prometheus.Desc
-	nightlight    *prometheus.Desc
-	sleepMode     *prometheus.Desc
-	unitStatus    *prometheus.Desc
-	panelLocked   *prometheus.Desc
-	waitTimeMin   *prometheus.Desc
-	dfiCycleCount *prometheus.Desc
-	lrClient      *lr.Client
+	cycles          *prometheus.Desc
+	drawerFull      *prometheus.Desc
+	capacity        *prometheus.Desc
+	nightlight      *prometheus.Desc
+	sleepMode       *prometheus.Desc
+	unitStatus      *prometheus.Desc
+	panelLocked     *prometheus.Desc
+	waitTimeMin     *prometheus.Desc
+	dfiCycleCount   *prometheus.Desc
+	cyclesUntilFull *prometheus.Desc
+	lrClient        *lr.Client
 }
 
 func NewCollector(email, password, apiKey, clientSecret, clientId, endpoint, authEndpoint string) *LitterRobotCollector {
@@ -66,6 +67,9 @@ func NewCollector(email, password, apiKey, clientSecret, clientId, endpoint, aut
 		dfiCycleCount: prometheus.NewDesc(
 			"litterrobot_dfi_cycle_count", "DFI cycle count", labels, nil,
 		),
+		cyclesUntilFull: prometheus.NewDesc(
+			"litterrobot_cycles_until_full", "cycles until full", labels, nil,
+		),
 		lrClient: client,
 	}
 }
@@ -80,6 +84,7 @@ func (lrc *LitterRobotCollector) Describe(ch chan<- *prometheus.Desc) {
 	ch <- lrc.panelLocked
 	ch <- lrc.waitTimeMin
 	ch <- lrc.dfiCycleCount
+	ch <- lrc.cyclesUntilFull
 }
 
 func (lrc *LitterRobotCollector) Collect(ch chan<- prometheus.Metric) {
@@ -96,6 +101,7 @@ func (lrc *LitterRobotCollector) Collect(ch chan<- prometheus.Metric) {
 		ch <- prometheus.MustNewConstMetric(lrc.panelLocked, prometheus.GaugeValue, bool2float(s.PanelLockActive), labels...)
 		ch <- prometheus.MustNewConstMetric(lrc.waitTimeMin, prometheus.GaugeValue, s.CleanCycleWaitTimeMinutes, labels...)
 		ch <- prometheus.MustNewConstMetric(lrc.dfiCycleCount, prometheus.GaugeValue, s.DFICycleCount, labels...)
+		ch <- prometheus.MustNewConstMetric(lrc.cyclesUntilFull, prometheus.GaugeValue, s.CyclesUntilFull, labels...)
 	}
 }
 
