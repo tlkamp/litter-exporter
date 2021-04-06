@@ -32,7 +32,7 @@ func init() {
 }
 
 func main() {
-	lrc := NewCollector(*email, *password, *apiKey, *clientSecret, *clientId)
+	lrc := NewCollector(*email, *password, *apiKey, *clientSecret, *clientId, *endpoint, *authEndpoint)
 	ticker := time.NewTicker(lrc.lrClient.Expiry - (120 * time.Second))
 	quit := make(chan struct{})
 	go func() {

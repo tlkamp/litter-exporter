@@ -16,13 +16,15 @@ type LitterRobotCollector struct {
 	lrClient   *lr.Client
 }
 
-func NewCollector(email, password, apiKey, clientSecret, clientId string) *LitterRobotCollector {
+func NewCollector(email, password, apiKey, clientSecret, clientId, endpoint, authEndpoint string) *LitterRobotCollector {
 	client, err := lr.NewClient(&lr.Config{
 		ApiKey:       apiKey,
 		Email:        email,
 		Password:     password,
 		ClientSecret: clientSecret,
 		ClientId:     clientId,
+		ApiUrl:       endpoint,
+		AuthUrl:      authEndpoint,
 	})
 	if err != nil {
 		log.Fatal(err)
