@@ -22,6 +22,7 @@ Metrics are available at the default and metrics endpoints (`/` and `/metrics` r
 | litterrobot_panel_locked      | Gauge   |
 | litterrobot_dfi_cycle_count    | Gauge   |
 | litterrobot_cycles_until_full | Gauge   |
+| litterrobot_cycles_after_full | Gauge   |
 
 ## Labels
 | Name   | Value                                                                |

@@ -17,6 +17,7 @@ type LitterRobotCollector struct {
 	waitTimeMin     *prometheus.Desc
 	dfiCycleCount   *prometheus.Desc
 	cyclesUntilFull *prometheus.Desc
+	cyclesAfterFull *prometheus.Desc
 	lrClient        *lr.Client
 }
 
@@ -70,6 +71,9 @@ func NewCollector(email, password, apiKey, clientSecret, clientId, endpoint, aut
 		cyclesUntilFull: prometheus.NewDesc(
 			"litterrobot_cycles_until_full", "cycles until full", labels, nil,
 		),
+		cyclesAfterFull: prometheus.NewDesc(
+			"litterrobot_cycles_after_full", "cycles after drawer full", labels, nil,
+		),
 		lrClient: client,
 	}
 }
@@ -85,6 +89,7 @@ func (lrc *LitterRobotCollector) Describe(ch chan<- *prometheus.Desc) {
 	ch <- lrc.waitTimeMin
 	ch <- lrc.dfiCycleCount
 	ch <- lrc.cyclesUntilFull
+	ch <- lrc.cyclesAfterFull
 }
 
 func (lrc *LitterRobotCollector) Collect(ch chan<- prometheus.Metric) {
@@ -102,6 +107,7 @@ func (lrc *LitterRobotCollector) Collect(ch chan<- prometheus.Metric) {
 		ch <- prometheus.MustNewConstMetric(lrc.waitTimeMin, prometheus.GaugeValue, s.CleanCycleWaitTimeMinutes, labels...)
 		ch <- prometheus.MustNewConstMetric(lrc.dfiCycleCount, prometheus.GaugeValue, s.DFICycleCount, labels...)
 		ch <- prometheus.MustNewConstMetric(lrc.cyclesUntilFull, prometheus.GaugeValue, s.CyclesUntilFull, labels...)
+		ch <- prometheus.MustNewConstMetric(lrc.cyclesAfterFull, prometheus.GaugeValue, s.CyclesAfterDrawerFull, labels...)
 	}
 }
 
