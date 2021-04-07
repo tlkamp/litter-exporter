@@ -8,10 +8,13 @@ builds:
       - linux
       - windows
       - darwin
+    binary: "{{ .ProjectName }}"
 dockers:
   - image_templates:
     - tlkamp/litter-exporter:{{ .Tag }}
     - tlkamp/litter-exporter:latest
+    binaries:
+      - "{{ .ProjectName }}"
 archives:
   - replacements:
       darwin: Darwin
