@@ -14,8 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@v1
       - env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
         run: |
           npx -p @semantic-release/changelog -p @semantic-release/git -p semantic-release semantic-release

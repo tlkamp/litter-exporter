@@ -1,10 +1,8 @@
 name: GoReleaser
 on:
-  workflow_run:
-    workflows:
-      - Release
-    types:
-      - completed
+  push:
+    tags:
+      - '**'
 
 jobs:
   goreleaser:
@@ -12,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch_depth: 0
+          fetch-depth: 0
       - uses: actions/setup-go@v2
       - uses: goreleaser/goreleaser-action@v2
         with:
