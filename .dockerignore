@@ -1,0 +1,9 @@
+.git*
+.idea
+.editorconfig
+*.md
+*.[yml|yaml]
+LICENSE
+Makefile
+doc/
+.releaserc
