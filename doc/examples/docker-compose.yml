@@ -1,0 +1,32 @@
+version: '3'
+services:
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./prometheus.yaml:/etc/prometheus/prometheus.yml
+    ports:
+      - 9090:9090
+  grafana:
+    image: grafana/grafana
+    ports:
+      - 3000:3000
+    volumes:
+    - ./grafana.ini:/etc/grafana/grafana.ini
+    - ./grafana-db-litter.json:/etc/grafana/dashboards/grafana-db-litter.json
+    - ./grafana-db-litter.yml:/etc/grafana/provisioning/dashboards/grafana-db-litter.yml
+    - ./grafana-ds-prometheus.yaml:/etc/grafana/provisioning/datasources/grafana-ds-prometheus.yaml
+    depends_on:
+      - prometheus
+  robot:
+    image: tlkamp/litter-exporter:latest
+    command:
+      - -email
+      - your-email-address@example.com
+      - -password
+      - your-password
+      - -api-key
+      - p7ndMoj61npRZP5CVz9v4Uj0bG769xy6758QRBPb
+      - -client-id
+      - "IYXzWN908psOm7sNpe4G.ios.whisker.robots"
+      - -client-secret
+      - "C63CLXOmwNaqLTB2xXo6QIWGwwBamcPuaul"
