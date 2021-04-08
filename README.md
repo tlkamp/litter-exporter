@@ -7,6 +7,11 @@ changes with no notice. Breaking changes will be handled as soon as possible.
 
 ![dashboard](doc/img/litter-exporter-dash.png)
 
+## Example
+An example Docker Compose configuration is contained in the [doc/examples](doc/examples) folder.
+
+To run this example, substitute values for `email` and `password` and run `docker-compose up`.
+
 ## Metrics
 Metrics are available at the default and metrics endpoints (`/` and `/metrics` respectively).
 
