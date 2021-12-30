@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/tlkamp/litter-exporter/compare/v1.4.1...v1.4.2) (2021-12-30)
+
+
+### Bug Fixes
+
+* **api:** update api version to 1.0.3 ([93d9734](https://github.com/tlkamp/litter-exporter/commit/93d9734ff1f59443bad8ed75379342f527410eac))
+
 ## [1.4.1](https://github.com/tlkamp/litter-exporter/compare/v1.4.0...v1.4.1) (2021-04-08)
 
 
