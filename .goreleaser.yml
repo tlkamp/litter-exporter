@@ -13,7 +13,7 @@ dockers:
   - image_templates:
     - tlkamp/litter-exporter:{{ .Tag }}
     - tlkamp/litter-exporter:latest
-    binaries:
+    ids:
       - "{{ .ProjectName }}"
 archives:
   - replacements:
