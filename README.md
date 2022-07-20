@@ -42,7 +42,7 @@ are the same for both.
 
 #### Docker
 ```console
-$ docker run --rm -p 9080:9080 litter-exporter:latest \
+$ docker run --rm -p 9080:9080 tlkamp/litter-exporter:latest \
     -email "your-email@example.com" \
     -password "your-password"
 ```
