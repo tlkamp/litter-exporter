@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/tlkamp/litter-exporter/compare/v1.5.0...v1.5.1) (2022-07-21)
+
+
+### Bug Fixes
+
+* **ci:** fix goreleaser again ([#20](https://github.com/tlkamp/litter-exporter/issues/20)) ([33c4ea3](https://github.com/tlkamp/litter-exporter/commit/33c4ea368cab592743e800a14fd4152de4493e00))
+
 # [1.5.0](https://github.com/tlkamp/litter-exporter/compare/v1.4.2...v1.5.0) (2022-07-21)
 
 
