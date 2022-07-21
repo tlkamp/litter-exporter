@@ -24,9 +24,3 @@ services:
       - your-email-address@example.com
       - -password
       - your-password
-      - -api-key
-      - p7ndMoj61npRZP5CVz9v4Uj0bG769xy6758QRBPb
-      - -client-id
-      - "IYXzWN908psOm7sNpe4G.ios.whisker.robots"
-      - -client-secret
-      - "C63CLXOmwNaqLTB2xXo6QIWGwwBamcPuaul"
