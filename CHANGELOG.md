@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/tlkamp/litter-exporter/compare/v1.4.2...v1.5.0) (2022-07-21)
+
+
+### Features
+
+* **cli:** add defaults for some args ([#19](https://github.com/tlkamp/litter-exporter/issues/19)) ([1ab4e0e](https://github.com/tlkamp/litter-exporter/commit/1ab4e0e35d8853a5136f91a57cfe128f86d4af58)), closes [#17](https://github.com/tlkamp/litter-exporter/issues/17)
+
 ## [1.4.2](https://github.com/tlkamp/litter-exporter/compare/v1.4.1...v1.4.2) (2021-12-30)
 
 
