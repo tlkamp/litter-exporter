@@ -43,32 +43,24 @@ are the same for both.
 #### Docker
 ```console
 $ docker run --rm -p 9080:9080 tlkamp/litter-exporter:latest \
-    -email "your-email@example.com" \
-    -password "your-password"
+    --email "your-email@example.com" \
+    --password "your-password"
 ```
 
 #### CLI
 ```console
-$ ./litter-exporter -h
+$ ./litter-exporter --help
 Usage of ./litter-exporter:
-  -address string
-        the server address (default "0.0.0.0:9080")
-  -api-key string
-        litter robot api key
-  -api-url string
-        litter robot API URL
-  -auth-url string
-        litter robot auth URL
-  -client-id string
-        litter robot client id
-  -client-secret string
-        litter robot client secret
-  -email string
-        litter robot account email address
-  -log-level string
-        the log level (default "info")
-  -password string
-        litter robot account password
+      --address string         the server address (default "0.0.0.0:9080")
+      --api-key string         litter robot api key (default "p7ndMoj61npRZP5CVz9v4Uj0bG769xy6758QRBPb")
+      --api-url string         litter robot API URL
+      --auth-url string        litter robot auth URL
+      --client-id string       litter robot client id (default "IYXzWN908psOm7sNpe4G.ios.whisker.robots")
+      --client-secret string   litter robot client secret (default "C63CLXOmwNaqLTB2xXo6QIWGwwBamcPuaul")
+      --email string           litter robot account email address
+  -h, --help                   print help and exit
+      --log-level string       the log level (default "info")
+      --password string        litter robot account password
 ```
 
 ## Configuration
@@ -76,6 +68,19 @@ The litter robot _requires_ only two pieces of information for configuration: th
 
 The other fields are optional and provided as a convenience in case the upstream Litter Robot API changes.
 
+### Environment Variables
+All CLI options can be configured as environment variables. Environment variables are all-caps (uppercase) and
+prefixed with `LR_`.
+
+If CLI arguments contain hyphens (`-`), use an underscore as a replacement in environment variable names.
+
+#### Example:
+```console
+$ export LR_EMAIL="your-email-address@example.com"
+$ export LR_PASSWORD="yourPassword"
+$ export LR_LOG_LEVEL=debug
+$ ./litter-exporter
+```
 
 ## Unit Status
 The unit status is represented by a non-negative integer.
@@ -84,7 +89,7 @@ The unit status is represented by a non-negative integer.
 |------------|---------|--------------------------------------|
 | RDY        | 0       | Ready                                |
 | CCP        | 1       | Clean Cycle in Progress              |
-| CCC        | 2       | Clean Cycle Complete                 |
+| CCC        | 2       | Clean Cycle Complete                 |!
 | CSF        | 3       | Cat Sensor Fault                     |
 | DF1        | 4       | Drawer full - will still cycle       |
 | DF2        | 5       | Drawer full - will still cycle       |

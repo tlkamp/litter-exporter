@@ -19,8 +19,8 @@ services:
       - prometheus
   robot:
     image: tlkamp/litter-exporter:latest
+    environment:
+      LR_PASSWORD: "yourPassword"
     command:
-      - -email
+      - --email
       - your-email-address@example.com
-      - -password
-      - your-password
