@@ -1,3 +1,16 @@
+# [2.0.0](https://github.com/tlkamp/litter-exporter/compare/v1.5.1...v2.0.0) (2022-07-23)
+
+
+### Features
+
+* support environment variables ([#22](https://github.com/tlkamp/litter-exporter/issues/22)) ([7f90542](https://github.com/tlkamp/litter-exporter/commit/7f90542bbf885c1588e14dceee488416e0d6721d)), closes [#17](https://github.com/tlkamp/litter-exporter/issues/17)
+
+
+### BREAKING CHANGES
+
+* Pflag does not support multi-character shorthands for flags, so double hyphens are
+now required for all flags being passed via CLI.
+
 ## [1.5.1](https://github.com/tlkamp/litter-exporter/compare/v1.5.0...v1.5.1) (2022-07-21)
 
 
