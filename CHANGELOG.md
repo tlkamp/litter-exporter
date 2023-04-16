@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/tlkamp/litter-exporter/compare/v2.0.0...v2.0.1) (2023-04-16)
+
+
+### Bug Fixes
+
+* update api dependency ([#24](https://github.com/tlkamp/litter-exporter/issues/24)) ([47d9118](https://github.com/tlkamp/litter-exporter/commit/47d91181b7bb243c1729d2f6403fc08b67ec2d91))
+
 # [2.0.0](https://github.com/tlkamp/litter-exporter/compare/v1.5.1...v2.0.0) (2022-07-23)
 
 
