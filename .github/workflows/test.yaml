@@ -11,27 +11,33 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Install Go
-        uses: actions/setup-go@v2
+      - uses: actions/setup-go@v3
+        with:
+          go-version: 1.18
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Test
         run: go test -v ./...
 
   golangci-lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v3
+        with:
+          go-version: 1.18
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v2
 
   goreleaser-check:
       runs-on: ubuntu-latest
       steps:
-        - uses: actions/checkout@v2
+        - uses: actions/checkout@v3
           with:
             fetch-depth: 0
-        - uses: actions/setup-go@v2
+        - uses: actions/setup-go@v3
+          with:
+            go-version: 1.18
         - uses: goreleaser/goreleaser-action@v2
           with:
             args: check
@@ -41,8 +47,8 @@ jobs:
     needs:
       - test
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
       - name: Release Dry Run
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
