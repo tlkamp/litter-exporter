@@ -51,16 +51,11 @@ $ docker run --rm -p 9080:9080 tlkamp/litter-exporter:latest \
 ```console
 $ ./litter-exporter --help
 Usage of ./litter-exporter:
-      --address string         the server address (default "0.0.0.0:9080")
-      --api-key string         litter robot api key (default "p7ndMoj61npRZP5CVz9v4Uj0bG769xy6758QRBPb")
-      --api-url string         litter robot API URL
-      --auth-url string        litter robot auth URL
-      --client-id string       litter robot client id (default "IYXzWN908psOm7sNpe4G.ios.whisker.robots")
-      --client-secret string   litter robot client secret (default "C63CLXOmwNaqLTB2xXo6QIWGwwBamcPuaul")
-      --email string           litter robot account email address
-  -h, --help                   print help and exit
-      --log-level string       the log level (default "info")
-      --password string        litter robot account password
+      --address string     the server address (default "0.0.0.0:9080")
+      --email string       litter robot account email address
+  -h, --help               print help and exit
+      --log-level string   the log level (default "info")
+      --password string    litter robot account password
 ```
 
 ## Configuration

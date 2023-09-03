@@ -1,9 +1,11 @@
 package main
 
 import (
+	"context"
+
 	"github.com/prometheus/client_golang/prometheus"
 	log "github.com/sirupsen/logrus"
-	lr "github.com/tlkamp/litter-api"
+	lr "github.com/tlkamp/litter-api/v2/pkg/client"
 )
 
 type LitterRobotCollector struct {
@@ -21,17 +23,10 @@ type LitterRobotCollector struct {
 	lrClient        *lr.Client
 }
 
-func NewCollector(email, password, apiKey, clientSecret, clientId, endpoint, authEndpoint string) *LitterRobotCollector {
-	client, err := lr.NewClient(&lr.Config{
-		ApiKey:       apiKey,
-		Email:        email,
-		Password:     password,
-		ClientSecret: clientSecret,
-		ClientId:     clientId,
-		ApiUrl:       endpoint,
-		AuthUrl:      authEndpoint,
-	})
-	if err != nil {
+func NewCollector(ctx context.Context, email, password string) *LitterRobotCollector {
+	client := lr.New(email, password)
+
+	if err := client.Login(ctx); err != nil {
 		log.Fatal(err)
 	}
 
@@ -93,8 +88,11 @@ func (lrc *LitterRobotCollector) Describe(ch chan<- *prometheus.Desc) {
 }
 
 func (lrc *LitterRobotCollector) Collect(ch chan<- prometheus.Metric) {
-	states, _ := lrc.lrClient.States()
-	for _, s := range states {
+	if err := lrc.lrClient.FetchRobots(context.Background()); err != nil {
+		return
+	}
+
+	for _, s := range lrc.lrClient.Robots() {
 		labels := []string{s.LitterRobotSerial, s.LitterRobotID, s.Name}
 
 		ch <- prometheus.MustNewConstMetric(lrc.capacity, prometheus.CounterValue, s.CycleCapacity, labels...)
