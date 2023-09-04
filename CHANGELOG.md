@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/tlkamp/litter-exporter/compare/v2.0.1...v3.0.0) (2023-09-04)
+
+
+### Bug Fixes
+
+* uptake litter-api v2 ([#27](https://github.com/tlkamp/litter-exporter/issues/27)) ([0938ab7](https://github.com/tlkamp/litter-exporter/commit/0938ab7079fdccaf1579e8804927cb93782d0655)), closes [#26](https://github.com/tlkamp/litter-exporter/issues/26)
+
+
+### BREAKING CHANGES
+
+* Removed several CLI flags that became irrelevant for litter-api v2
+
 ## [2.0.1](https://github.com/tlkamp/litter-exporter/compare/v2.0.0...v2.0.1) (2023-04-16)
 
 
